@@ -1,25 +1,57 @@
 <template name="stud">
+	<h3> Create entry </h3>
 	<form method="get" >
 		Name <input type="name" id="name" required> <br>
-		Present <input type="present" id="present" required> <br>
+		Present 
+		<input type="radio" name="present" value=True checked> True
+		<input type="radio" name="present" value=False> False<br>
 		Date <input type="date" id="date" required> <br>
 		<button type="submit" id ="f1" class="btn btn-primary"> Submit </button>
 	</form>
+	
+	<div class="row">
+		<br>
+		Enter student name to search attendance <br>
+		<input type="name" id="searchName" required>
+	</div>
 
-	No. of days present {{present}} <br>
+	<div class="row">
+		<br>
+		Range filter <small> Note: both ranges required for filtering </small> <br>
+		From <input type="date" id="from" required> <br>
+		To <input type="date" id="to" required> <br>
+	</div>
+
+	<div class="row">
+	<button type="submit" id ="clear" class="btn btn-primary"> Clear </button>
+	</div>
+	
+	<br>
+	<br>
+
+	No. of days present {{pres}} <br>
 
 	No. of days leave {{leave}}<br>
-
-	All data
 	<br>
+	<br>
+	Below list contains the data's of student system
+	{{#unless data}} Nothing to show, make some entries  {{/unless}}
+	<br>
+
 
 	{{#each data}}
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			Name {{name}} 
-			Date {{date}}
-			Attendance {{present}}
-		</div>
+			<div> Name {{name}} </div>
+			<div> 
+				{{#if present}} 
+				Student is present on 
+				{{else}}
+				Student is leave on 
+				{{/if}}
+				{{date}} 
+			</div>
+		</div> <br>
 	</div>
 	{{/each}}
 

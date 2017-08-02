@@ -7,7 +7,11 @@ StudentSchema = new SimpleSchema({
   },
   "date": {
     type: Date,
-    label: "principal Id",
+    label: "createdAt"
+  },
+  "createdAt": {
+    type: Date,
+    label: "createdAt",
     autoValue: function() {
 	    if ( this.isInsert ) {
 	      return new Date;
@@ -32,7 +36,7 @@ StudentSchema = new SimpleSchema({
 
 
 
-//Student.attachSchema(StudentSchema);
+Student.attachSchema(StudentSchema);
 
 
 if (Meteor.isClient) {
